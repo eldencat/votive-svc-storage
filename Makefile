@@ -45,7 +45,7 @@ endif
 taplo_run = docker run \
         --name=$(DOCKER_NAME)-taplo-$@ \
 		--rm \
-	    --user `id -u`:`id -g` \
+        --user `id -u`:`id -g` \
 		-w "/usr/src/app" \
 		-v "$(PWD):/usr/src/app" \
         -t tamasfe/taplo $(1)
