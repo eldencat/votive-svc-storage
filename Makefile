@@ -34,7 +34,7 @@ docker_run = docker run \
 	-t $(BUILD_IMAGE_NAME):$(BUILD_IMAGE_TAG) \
 	$(1)
 
-cargo_run = $(call docker_run,cargo $(1) $(2))
+cargo_run = $(call docker_run,cargo $(1) --manifest-path=/usr/local/app/Cargo.toml $(2))
 
 taplo_run = docker run \
 	--name=$(DOCKER_NAME)-taplo-$@ \
