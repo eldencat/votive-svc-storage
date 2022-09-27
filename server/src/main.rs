@@ -1,4 +1,5 @@
 //! Server
+// use surrealdb;
 
 /// gRPC server structs and functions
 pub mod server {

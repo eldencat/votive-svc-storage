@@ -1,3 +1,63 @@
+/// / Fields which identify an item
+#[derive(Copy)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct Signature {
+    /// Organization ID
+    #[prost(uint32, tag="1")]
+    pub id_org: u32,
+    /// Dictionary ID
+    #[prost(uint32, tag="2")]
+    pub id_dict: u32,
+    /// Item ID
+    #[prost(uint32, tag="3")]
+    pub id_item: u32,
+}
+/// / Request to update entries
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateRequest {
+    /// If true, check if update would be successful without applying changes
+    #[prost(bool, tag="1")]
+    pub dry_run: bool,
+    /// Which item to update
+    #[prost(message, optional, tag="2")]
+    pub sig: ::core::option::Option<Signature>,
+    /// User ID
+    #[prost(uint32, tag="3")]
+    pub id_user: u32,
+    /// Fields to update
+    #[prost(map="string, string", tag="4")]
+    pub updates: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
+}
+/// / Result of update request
+#[derive(Copy)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct UpdateResponse {
+    /// Success of operation
+    #[prost(bool, tag="1")]
+    pub success: bool,
+    /// If field was changed
+    #[prost(bool, tag="2")]
+    pub changed: bool,
+}
+/// / Get items
+#[derive(Copy)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetRequest {
+    /// Item to get
+    #[prost(message, optional, tag="1")]
+    pub sig: ::core::option::Option<Signature>,
+    /// User ID
+    #[prost(uint32, tag="2")]
+    pub id_user: u32,
+}
+/// / Result of Get Attempt
+#[derive(Copy)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct GetResponse {
+    /// Success of response
+    #[prost(bool, tag="1")]
+    pub success: bool,
+}
 /// Generated client implementations.
 pub mod storage_grpc_client {
     #![allow(unused_variables, dead_code, missing_docs, clippy::let_unit_value)]
@@ -66,6 +126,44 @@ pub mod storage_grpc_client {
         pub fn accept_compressed(mut self, encoding: CompressionEncoding) -> Self {
             self.inner = self.inner.accept_compressed(encoding);
             self
+        }
+        pub async fn update_items(
+            &mut self,
+            request: impl tonic::IntoRequest<super::UpdateRequest>,
+        ) -> Result<tonic::Response<super::UpdateResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/grpc.StorageGrpc/updateItems",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
+        }
+        pub async fn get_items(
+            &mut self,
+            request: impl tonic::IntoRequest<super::GetRequest>,
+        ) -> Result<tonic::Response<super::GetResponse>, tonic::Status> {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/grpc.StorageGrpc/getItems",
+            );
+            self.inner.unary(request.into_request(), path, codec).await
         }
     }
 }

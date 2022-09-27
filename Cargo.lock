@@ -3125,6 +3125,7 @@ dependencies = [
 name = "votive-svc-storage"
 version = "0.1.0"
 dependencies = [
+ "prost",
  "surrealdb",
  "tonic",
  "tonic-build",
@@ -3135,6 +3136,7 @@ dependencies = [
 name = "votive-svc-storage-client"
 version = "0.1.0"
 dependencies = [
+ "prost",
  "tonic",
  "tonic-types",
 ]

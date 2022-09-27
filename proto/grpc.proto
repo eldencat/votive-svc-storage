@@ -2,5 +2,58 @@ syntax = "proto3";
 package grpc;
 
 service StorageGrpc {
+    rpc updateItems (UpdateRequest) returns (UpdateResponse);
+    rpc getItems (GetRequest) returns (GetResponse);
+}
 
+/// Fields which identify an item
+message Signature {
+    // Organization ID
+    uint32 id_org = 1;
+
+    // Dictionary ID
+    uint32 id_dict = 2;
+
+    // Item ID
+    uint32 id_item = 3;
+}
+
+/// Request to update entries
+message UpdateRequest {
+    // If true, check if update would be successful without applying changes
+    bool dry_run = 1;
+
+    // Which item to update
+    Signature sig = 2;
+
+    // User ID
+    uint32 id_user = 3;
+
+    // Fields to update
+    map<string, string> updates = 4;
+}
+
+/// Result of update request
+message UpdateResponse {
+    // Success of operation
+    bool success = 1;
+
+    // If field was changed
+    bool changed = 2;
+}
+
+/// Get items
+message GetRequest {
+    // Item to get
+    Signature sig = 1;
+
+    // User ID
+    uint32 id_user = 2;
+}
+
+/// Result of Get Attempt
+message GetResponse {
+
+    // Success of response
+    bool success = 1;
 }
