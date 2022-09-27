@@ -4,10 +4,11 @@
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let server_config = tonic_build::configure()
         // .type_attribute("UpdateRequest", "#[derive(Copy)]")
-        .type_attribute("UpdateResponse", "#[derive(Copy)]")
-        .type_attribute("GetResponse", "#[derive(Copy)]")
-        .type_attribute("GetRequest", "#[derive(Copy)]")
-        .type_attribute("Signature", "#[derive(Copy)]");
+        .type_attribute("UpdateResponse", "#[derive(Eq, Copy)]")
+        .type_attribute("GetResponse", "#[derive(Eq, Copy)]")
+        .type_attribute("GetRequest", "#[derive(Eq, Copy)]")
+        .type_attribute("Signature", "#[derive(Eq, Copy)]")
+        .type_attribute("UpdateRequest", "#[derive(Eq)]");
     let client_config = server_config.clone();
 
     server_config

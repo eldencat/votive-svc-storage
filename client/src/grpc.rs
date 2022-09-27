@@ -1,5 +1,5 @@
 /// / Fields which identify an item
-#[derive(Copy)]
+#[derive(Eq, Copy)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct Signature {
     /// Organization ID
@@ -13,6 +13,7 @@ pub struct Signature {
     pub id_item: u32,
 }
 /// / Request to update entries
+#[derive(Eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateRequest {
     /// If true, check if update would be successful without applying changes
@@ -29,7 +30,7 @@ pub struct UpdateRequest {
     pub updates: ::std::collections::HashMap<::prost::alloc::string::String, ::prost::alloc::string::String>,
 }
 /// / Result of update request
-#[derive(Copy)]
+#[derive(Eq, Copy)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct UpdateResponse {
     /// Success of operation
@@ -40,7 +41,7 @@ pub struct UpdateResponse {
     pub changed: bool,
 }
 /// / Get items
-#[derive(Copy)]
+#[derive(Eq, Copy)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetRequest {
     /// Item to get
@@ -51,7 +52,7 @@ pub struct GetRequest {
     pub id_user: u32,
 }
 /// / Result of Get Attempt
-#[derive(Copy)]
+#[derive(Eq, Copy)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct GetResponse {
     /// Success of response
