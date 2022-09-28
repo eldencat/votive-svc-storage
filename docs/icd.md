@@ -18,7 +18,7 @@ Document | Description
 :construction: Requirements & User Stories - `votive-svc-storage` :construction: | Requirements and user stories
 [Concept of Operations (CONOPS) - `votive-svc-storage`](./conops.md) | Module overview
 [Software Design Document (SDD) - `votive-svc-storage`](./sdd.md) | Module software design
-:construction: [High-Level Interface Control Document (ICD)](https://raw.githubusercontent.com/eldencat/se-votive/develop/docs/icd.md) :construction: | Interfaces shared by all microservices.
+:construction: High-Level Interface Control Document (ICD) :construction: | Interfaces shared by all microservices.
 
 ## :wave: Public API
 ### :file_folder: Files
