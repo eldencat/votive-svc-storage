@@ -18,7 +18,3 @@ smul
 ifeq
 mstruebing
 CONOPS
-prost
-codegen
-Prost
-surrealdb
