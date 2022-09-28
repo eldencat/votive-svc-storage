@@ -21,7 +21,7 @@ Document | Description
 :construction: Requirements & User Stories - `votive-svc-storage` :construction: | Requirements and user stories
 [Concept of Operations (CONOPS) - `votive-svc-storage`](./conops.md) | Module overview
 [Interface Control Document (ICD) - `votive-svc-storage`](./icd.md) | Overview of this module's inputs and outputs
-:construction: [High-Level Interface Control Document (ICD)](https://raw.githubusercontent.com/eldencat/se-votive/develop/docs/icd.md) :construction: | Interfaces shared by all microservices.
+:construction: High-Level Interface Control Document (ICD) :construction: | Interfaces shared by all microservices.
 ## Module Attributes
 
 Attribute | Applies | Explanation
