@@ -5,7 +5,7 @@ IMAGE_NAME       := votive-svc-storage
 BUILD_IMAGE_NAME := ghcr.io/eldencat/devtools/votive-dev
 BUILD_IMAGE_TAG  := latest
 DOCKER_PORT      := 8080
-HOST_PORT        := 8000
+HOST_PORT        := 8001
 
 CARGO_MANIFEST_PATH ?= $(shell find -maxdepth 1 -name Cargo.toml)
 CARGO_INCREMENTAL   ?= 1
